@@ -21,7 +21,7 @@ function Todo({ todo,todoDelete}) {
             <h1><strong className=''>{todo.text}</strong></h1>
         </div>
         <div className="w-1/6 flex items-center justify-center text-sm">
-            <p>{todo.timeleft} Time Left</p>
+            <p>Time Left {todo.timeleft}</p>
             {/* <p>{todo.deadline}</p> */}
         </div>
         <div className="butt w-1/6 flex items-center justify-center -mt-3 ">

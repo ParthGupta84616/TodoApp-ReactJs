@@ -9,23 +9,19 @@ function App() {
   const handleClick = () => {
     if (inputValue.trim() !== '') {
       if (inputDate) {
-        const date1 = new Date().toUTCString().toString(); // Corrected: Call toString()
-        const date2 = new Date(inputDate.trim()).toUTCString(); // Corrected: Call toString()
-        console.log(date1, date2);
-        const differenceInMilliseconds = Math.abs(new Date(date2) - new Date(date1)); // Corrected: Convert strings to Date objects
-        console.log(differenceInMilliseconds);
+        const date1 = new Date().toUTCString().toString();
+        const date2 = new Date(inputDate.trim()).toUTCString(); 
+        const differenceInMilliseconds = Math.abs(new Date(date2) - new Date(date1)); 
   
         const Hours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
         const Minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
-        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:`${Hours}h:${Minutes}min`,minleft:differenceInMilliseconds/60000}]);
-        console.log(`${Hours}H:${Minutes}Min`);
+        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:`${Hours}h:${Minutes}min`,minleft:differenceInMilliseconds/60000}].sort((a,b)=>a.minleft-b.minleft));
       } else {
-        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:"Not Set" }]);
+        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:"Not Set",minleft:Infinity }]);
       }
       setInputValue('');
       console.log(inputDate);
       setInputDate("");
-      // console.log(todos.id,todos.deadline);
     }
   };
   
