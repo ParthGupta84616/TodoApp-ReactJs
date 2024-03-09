@@ -8,12 +8,27 @@ function App() {
 
   const handleClick = () => {
     if (inputValue.trim() !== '') {
-      setTodos([...todos , {id:new Date().toUTCString(),text:inputValue.trim(),deadline:inputDate}]);
+      if (inputDate) {
+        const date1 = new Date().toUTCString().toString(); // Corrected: Call toString()
+        const date2 = new Date(inputDate.trim()).toUTCString(); // Corrected: Call toString()
+        console.log(date1, date2);
+        const differenceInMilliseconds = Math.abs(new Date(date2) - new Date(date1)); // Corrected: Convert strings to Date objects
+        console.log(differenceInMilliseconds);
+  
+        const Hours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
+        const Minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:`${Hours}h:${Minutes}min`,minleft:differenceInMilliseconds/60000}]);
+        console.log(`${Hours}H:${Minutes}Min`);
+      } else {
+        setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:"Not Set" }]);
+      }
       setInputValue('');
       console.log(inputDate);
-      setInputDate(null)
+      setInputDate("");
+      // console.log(todos.id,todos.deadline);
     }
   };
+  
   const handleKey = (event) => {
     if (event.key==="Enter"){
       handleClick()
@@ -30,6 +45,7 @@ function App() {
   const todoDelete = (id) =>{
     setTodos(todos.filter(todo => todo.id !== id));
   }
+  
 
   return (
     <div className='bg-slate-900 w-screen h-screen '>
