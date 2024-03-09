@@ -12,8 +12,6 @@ function App() {
         const date1 = new Date().toUTCString().toString();
         const date2 = new Date(inputDate.trim()).toUTCString(); 
         const differenceInMilliseconds = Math.abs(new Date(date2) - new Date(date1)); 
-        console.log(differenceInMilliseconds/60000);
-  
         const Hours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
         const Minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
         setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:`${Hours}h:${Minutes}min`,minleft:differenceInMilliseconds/60000}].sort((a,b)=>a.minleft-b.minleft));
@@ -45,7 +43,7 @@ function App() {
   
 
   return (
-    <div className='bg-slate-900 w-screen h-screen '>
+    <div className='bg-slate-900  ' style={{height:"100vh"}}>
       <div className="wrapper flex flex-col items-center p-8 ">
         <div className="box1 rounded-xl border-black border-2 flex h-16 mt-8 w-full  ">
           <input
@@ -81,7 +79,7 @@ function App() {
         <div className="box2 text-white bg-slate-900 border-slate-800 border-4 mt-4 w-full">
           {todos.map((todo, index) => (
             
-            <Todo todo={todo} id={todo.id} todoDelete={todoDelete}/>
+            <Todo todo={todo} id={todo.id} todoDelete={todoDelete} />
           ))}
         </div>
       </div>
