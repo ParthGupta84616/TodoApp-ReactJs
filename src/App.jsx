@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Todo from './components/Todo';
+import Header from './components/Header';
 
 function App() {
   const [inputValue, setInputValue] = useState('');
@@ -43,7 +44,8 @@ function App() {
   
 
   return (
-    <div className='bg-slate-900  ' style={{height:"100vh"}}>
+    <div >
+      <Header />
       <div className="wrapper flex flex-col items-center p-8 ">
         <div className="box1 rounded-xl border-black border-2 flex h-16 mt-8 w-full  ">
           <input
@@ -59,7 +61,7 @@ function App() {
             <button >Enter Deadline</button>
           </label>
           <input 
-          className=''
+          className='bg-gray-600'
             type="datetime-local" 
             id="datetime" 
             name="datetime"

@@ -73,6 +73,11 @@ function Todo({ todo, todoDelete }) {
             setdropdown(false)
         }
     }
+    const handleKey = (event) => {
+        if (event.key==="Enter"){
+            handleSubmit()
+        }
+      }
     return (
         <>
         <div className={`card  rounded-xl ${bg} w- h-14 p-2 flex  border-green-950 border-2 text-gray-800  bold text-xl`}>
@@ -111,6 +116,7 @@ function Todo({ todo, todoDelete }) {
                 className="w-full px-2 py-1 h-32 bg-slate-800 text-gray-400 text-xl border border-gray-400 rounded font-bold p-3"
                 onChange={handleChange}
                 value={inputValue}
+                onKeyDown={handleKey}
                 />
             </div>
             <div className="dis w-1/6 flex items-center justify-center">
