@@ -12,6 +12,7 @@ function App() {
         const date1 = new Date().toUTCString().toString();
         const date2 = new Date(inputDate.trim()).toUTCString(); 
         const differenceInMilliseconds = Math.abs(new Date(date2) - new Date(date1)); 
+        console.log(differenceInMilliseconds/60000);
   
         const Hours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
         const Minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
