@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Todo from './components/Todo';
 import Header from './components/Header';
 
@@ -6,6 +6,8 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const [inputDate, setInputDate] = useState(null)
+  const [userData, setuserData] = useState(null)
+
 
   const handleClick = () => {
     if (inputValue.trim() !== '') {
@@ -19,7 +21,7 @@ function App() {
       } else {
         setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:"Not Set",minleft:Infinity }]);
       }
-      
+
       setInputValue('');
       console.log(inputDate);
       setInputDate("");
@@ -42,11 +44,16 @@ function App() {
   const todoDelete = (id) =>{
     setTodos(todos.filter(todo => todo.id !== id));
   }
-  
+  const info = (result)=>{
+    setuserData(result)
+  }
+  useEffect(() => {
+    console.log(userData); 
+  }, [userData]);
 
   return (
     <div >
-      <Header />
+      <Header info={info}/>
       <div className="wrapper flex flex-col items-center p-8 ">
         <div className="box1 rounded-xl border-black border-2 flex h-16 mt-8 w-full  ">
           <input

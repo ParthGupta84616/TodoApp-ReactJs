@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBddsiRInVspsp9DYJAA3sMgZMqdkmR95Y",
   authDomain: "todo-9fcc8.firebaseapp.com",
+  databaseURL: "https://todo-9fcc8-default-rtdb.firebaseio.com",
   projectId: "todo-9fcc8",
   storageBucket: "todo-9fcc8.appspot.com",
   messagingSenderId: "3032647725",
@@ -10,6 +13,9 @@ const firebaseConfig = {
   measurementId: "G-QW4QXNXC47"
 };
 
+
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app)
-export default app 
+const auth = getAuth(app);
+const database = getDatabase(app); 
+
+export { app, auth, database }; 
