@@ -19,6 +19,7 @@ function App() {
       } else {
         setTodos([...todos, { id: new Date().toUTCString(), text: inputValue.trim(), deadline: inputDate, timeleft:"Not Set",minleft:Infinity }]);
       }
+      
       setInputValue('');
       console.log(inputDate);
       setInputDate("");
