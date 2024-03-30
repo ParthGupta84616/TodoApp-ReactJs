@@ -54,17 +54,17 @@ function App() {
   return (
     <div >
       <Header info={info}/>
-      <div className="wrapper flex flex-col items-center p-8 ">
-        <div className="box1 rounded-xl border-black border-2 flex h-16 mt-8 w-full  ">
+      <div className="wrapper flex flex-col items-center md:p-8 ">
+        <div className="box1 rounded-xl border-black border-2 flex md:h-16 mt-8 w-full  ">
           <input
-            className='bg-gray-400 rounded-xl text-blue-900 text-center text-3xl w-4/6'
+            className='bg-gray-400 rounded-xl text-blue-900 text-center text-3xl md:w-4/6 w-1/2'
             type="text"
             value={inputValue}
             onChange={handleChange}
             onKeyDown={handleKey}
           />
           
-          <div className='w-1/6  flex text-green-600'>
+          <div className='md:w-1/5 w-1/3   flex text-green-600'>
           <label htmlFor="datetime">
             <button >Enter Deadline</button>
           </label>

@@ -80,14 +80,14 @@ function Todo({ todo, todoDelete }) {
       }
     return (
         <>
-        <div className={`card  rounded-xl ${bg} w- h-14 p-2 flex  border-green-950 border-2 text-gray-800  bold text-xl`}>
-            <div className="time butt w-1/6 flex items-center justify-center text-sm">
+        <div className={`card  rounded-xl ${bg}  md:h-14 p-2 flex  border-green-950 border-2 text-gray-800  bold md:text-sm text-xs`}>
+            <div className="time butt md:w-1/6 w-1/4 flex items-center justify-center ">
                 <p >{todo.id}</p>
             </div>
-            <div className="todo w-3/6 flex items-center justify-center">
-                <h1><strong className=''>{todo.text}</strong></h1>
+            <div className="todo md:w-3/6 w-1/2 w- flex items-center justify-center">
+                <h1><strong className='text-xl'>{todo.text}</strong></h1>
             </div>
-            <div className="w-1/6 flex items-center justify-center text-sm">
+            <div className="md:w-1/6 w-1/6 flex items-center justify-center text-sm">
                 <p>Time Left {TimeLeft}</p>
             </div>
             <div className="butt w-1/6 flex items-center justify-center -mt-3 ">
@@ -97,7 +97,7 @@ function Todo({ todo, todoDelete }) {
         </div>
         {!dropdown?(
         <div className="text flex w-full p-2 transition-all duration-300" >
-            <div className="dis w-1/6 flex items-center justify-center text-xl ">
+            <div className="dis md:w-1/6 w-1/4 md:text-xl flex items-center justify-center text-sm ">
                 <h1><strong>Description</strong></h1>
             </div>
             <div className="input w-9/12">
@@ -107,21 +107,21 @@ function Todo({ todo, todoDelete }) {
     )
         :
     (
-        <div className="dropdown flex w-full p-2 h-36 transition-all duration-300">
-            <div className="dis w-1/6 flex items-center justify-center text-xl">
+        <div className="dropdown flex w-full p-2 md:h-36 h-20 transition-all duration-300">
+            <div className="dis md:w-1/6 w-1/4 md:text-xl flex items-center justify-center text-sm p-1 ">
                 <h1><strong>Description</strong></h1>
             </div>
             <div className="input w-9/12">
                 <textarea 
-                className="w-full px-2 py-1 h-32 bg-slate-800 text-gray-400 text-xl border border-gray-400 rounded font-bold p-3"
+                className="w-full px-2 py-1 md:h-32  bg-slate-800 text-gray-400 text-xl border border-gray-400 rounded font-bold p-3"
                 onChange={handleChange}
                 value={inputValue}
                 onKeyDown={handleKey}
                 />
             </div>
-            <div className="dis w-1/6 flex items-center justify-center">
+            <div className="dis md:w-1/6 flex items-center justify-center p-1">
                 <button 
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
+                className="bg-blue-500 text-white md:px-4 px-2 py-2 rounded-md"
                 onClick={handleSubmit}
                 ><strong>Submit</strong></button>
             </div>
